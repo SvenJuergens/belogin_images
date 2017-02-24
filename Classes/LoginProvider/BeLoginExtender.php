@@ -19,6 +19,7 @@ use TYPO3\CMS\Backend\Controller\LoginController;
 use TYPO3\CMS\Backend\LoginProvider\UsernamePasswordLoginProvider;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class BeLoginExtender extends UsernamePasswordLoginProvider
@@ -32,6 +33,9 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
     {
         parent::render($view, $pageRenderer, $loginController);
 
+        if($this->showImages() === false){
+            return;
+        }
         $json = json_decode(
             GeneralUtility::getUrl(
                 GeneralUtility::getFileAbsFileName(
@@ -55,5 +59,23 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
         ');
     }
 
+    public function showImages()
+    {
+        $settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['belogin_images']);
+        if (empty($settings)) {
+            return true;
+        }
+        if (isset($settings['IPmask']) && empty($settings['IPmask'])) {
+            return true;
+        }
+
+        if (isset($settings['IPmask']) && !empty($settings['IPmask'])) {
+            //check current IP
+            if (GeneralUtility::cmpIP(GeneralUtility::getIndpEnv('REMOTE_ADDR'), $settings['IPmask'])) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
