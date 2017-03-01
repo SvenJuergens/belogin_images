@@ -11,8 +11,8 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'BeLogin Image',
-    'description' => 'Display random Google Chromecast Background Images at you TYPO3 BackendLogin Page.',
+    'title' => 'Backend Login Images',
+    'description' => 'Display random Google Chromecast Background Images at your TYPO3 Backend Login Page.',
     'category' => 'plugin',
     'author' => 'Sven Jürgens',
     'author_email' => 'typo3@blue-side.de',
@@ -21,10 +21,10 @@ $EM_CONF[$_EXTKEY] = [
     'uploadfolder' => '0',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '1.0.1',
+    'version' => '1.0.2',
     'constraints' => [
         'depends' => [
-            'typo3' => '7.6.0-7.6.99',
+            'typo3' => '7.6.0-8.6.99',
         ],
         'conflicts' => [],
         'suggests' => [],
