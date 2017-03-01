@@ -44,16 +44,34 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
             true
         );
         if (is_array($json)) {
-            $backgroundImage = $json[rand(0, count($json))]['url'];
+            $randomNumber = rand(0, count($json));
+            $photo = [
+                'url' => $json[$randomNumber]['url'],
+                'author' => $json[$randomNumber]['author']
+            ];
         } else {
-            $backgroundImage = 'https://lh3.googleusercontent.com/nBVYnwmEQH9yRRE6CDqjaZ36-vV_yMolb4kPer0Dxkfuh529OFsQ=s1280-w1280-h720-p-k-no-nd-mv';
+            $photo = [
+                'url' => 'https://lh4.googleusercontent.com/-7EJI2_bMWrg/U0_6WXfnu0I/AAAAAAAA2IA/qnv2qDY374E/s1920-w1920-h1080-c/388A4957.jpg',
+                'author' => 'Leo Deegan'
+            ];
         }
         $pageRenderer->addCssInlineBlock('beloginimages', '
             @media (min-width: 768px){
                 .typo3-login-carousel-control.right,
                 .typo3-login-carousel-control.left,
                 .panel-login { border: 0; }
-                .typo3-login { background-image: url("' . $backgroundImage . '"); }
+                .typo3-login { background-image: url("' . $photo['url'] . '"); }
+                .typo3-login:after{
+                    content: " ' . $photo['author']  . ' ";
+                    position: absolute;
+                    left:0;
+                    bottom:20px;
+                    color: #000;
+                    font-size:18px;
+                    background-color:rgba(255,255,255,0.4);
+                    padding:2px 0 2px 30px;
+                    width:100%;
+                }
             }
         ');
     }
