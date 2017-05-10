@@ -16,8 +16,8 @@
     "typo3/cms-frontend": ">=7.6.0 <9.0.0"
   },
   "replace": {
-    "ext_key": "self.version",
-    "typo3-ter/ext-key": "self.version"
+    "belogin_images": "self.version",
+    "typo3-ter/belogin-images": "self.version"
   },
   "autoload": {
     "psr-4": {
