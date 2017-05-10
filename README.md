@@ -1,6 +1,6 @@
 # TYPO3 Extension BeLogin Images
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/svenjuergens/belogin_images.svg)](https://packagist.org/packages/ichhabrecht/content-defender)
+[![Latest Stable Version](https://img.shields.io/packagist/v/svenjuergens/belogin_images.svg)](https://packagist.org/packages/svenjuergens/belogin_images)
 
 Display random Google Chromecast Background Images at you TYPO3 BackendLogin Page.
 
