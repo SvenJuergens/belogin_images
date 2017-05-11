@@ -1,6 +1,6 @@
 {
   "name": "svenjuergens/belogin_images",
-  "description": "Display random Google Chromecast Background Images at your TYPO3 Backend Login Page.",
+  "description": "Display random Background Images from different sources at your TYPO3 BackendLogin Page.",
   "keywords": ["typo3", "extension", "Backend"],
   "homepage": "https://github.com/SvenJuergens/belogin_images",
   "authors": [
