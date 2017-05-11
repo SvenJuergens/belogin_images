@@ -15,6 +15,9 @@ namespace SvenJuergens\BeloginImages\LoginProvider;
  * The TYPO3 project - inspiring people to share!
  */
 
+use SvenJuergens\BeloginImages\Services\ChromeCastService;
+use SvenJuergens\BeloginImages\Services\FolderService;
+use SvenJuergens\BeloginImages\Services\UnsplashService;
 use TYPO3\CMS\Backend\Controller\LoginController;
 use TYPO3\CMS\Backend\LoginProvider\UsernamePasswordLoginProvider;
 use TYPO3\CMS\Core\Page\PageRenderer;
@@ -23,6 +26,8 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class BeLoginExtender extends UsernamePasswordLoginProvider
 {
+    public $settings = [];
+
     /**
      * @param StandaloneView $view
      * @param PageRenderer $pageRenderer
@@ -35,34 +40,18 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
         if ($this->showImages() === false) {
             return;
         }
-        $json = json_decode(
-            GeneralUtility::getUrl(
-                GeneralUtility::getFileAbsFileName(
-                    'EXT:belogin_images/Resources/Private/Libraries/chromecast-backgrounds/backgrounds.json'
-                )
-            ),
-            true
-        );
-        if (is_array($json)) {
-            $randomNumber = rand(0, count($json));
-            $photo = [
-                'url' => $json[$randomNumber]['url'],
-                'author' => $json[$randomNumber]['author']
-            ];
-        } else {
-            $photo = [
-                'url' => 'https://lh4.googleusercontent.com/-7EJI2_bMWrg/U0_6WXfnu0I/AAAAAAAA2IA/qnv2qDY374E/s1920-w1920-h1080-c/388A4957.jpg',
-                'author' => 'Leo Deegan'
-            ];
-        }
-        $pageRenderer->addCssInlineBlock('beloginimages', '
-            @media (min-width: 768px){
+        $imageData = $this->getImageInfo();
+
+        $imageCSS[] = '
                 .typo3-login-carousel-control.right,
                 .typo3-login-carousel-control.left,
                 .panel-login { border: 0; }
-                .typo3-login { background-image: url("' . $photo['url'] . '"); }
-                .typo3-login:after{
-                    content: " ' . $photo['author']  . ' ";
+                .typo3-login { background-image: url("' . $imageData['url'] . '"); }
+        ';
+        if(isset($imageData['author']) && !empty($imageData['author'])){
+            $imageCSS[] = '
+            .typo3-login:after{
+                    content: " ' . $imageData['author']  . ' ";
                     position: absolute;
                     left:0;
                     bottom:20px;
@@ -72,13 +61,21 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
                     padding:2px 0 2px 30px;
                     width:100%;
                 }
+            ';
+        }
+
+        $pageRenderer->addCssInlineBlock(
+            'beloginimages', '
+            @media (min-width: 768px){' .
+                implode('', $imageCSS)
+            . '
             }
         ');
     }
 
     public function showImages()
     {
-        $settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['belogin_images']);
+        $settings = $this->getSettings();
         if (empty($settings)) {
             return true;
         }
@@ -93,6 +90,31 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
             }
         }
         return false;
+    }
+
+    public function getImageInfo(){
+        switch ($this->settings['source']) {
+            case 'google':
+                $imageData =  ChromeCastService::image($this->settings);
+                break;
+            case 'unsplash':
+                $imageData =  UnsplashService::image($this->settings);
+                break;
+            case 'folder':
+                $imageData = FolderService::image($this->settings);
+                break;
+            default:
+                $imageData = [];
+                break;
+        }
+        return $imageData;
+    }
+
+    public function getSettings(){
+        if(empty($this->settings)){
+            $this->settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['belogin_images']);
+        }
+        return $this->settings;
     }
 }
 
