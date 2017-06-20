@@ -1,4 +1,5 @@
 <?php
+
 namespace SvenJuergens\BeloginImages\Services;
 
 /**
@@ -17,26 +18,27 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class FolderService
 {
-     public static function image($settings){
-         $imageData = [];
-         if($settings['folder']) {
-             $absPath = GeneralUtility::resolveBackPath(
-                 $settings['folder']
-             );
-             // Get rotation folder:
-             $dir = GeneralUtility::getFileAbsFileName($absPath);
+    public static function image($settings)
+    {
+        $imageData = [];
+        if ($settings['folder']) {
+            $absPath = GeneralUtility::resolveBackPath(
+                $settings['folder']
+            );
+            // Get rotation folder:
+            $dir = GeneralUtility::getFileAbsFileName($absPath);
 
-             if ($dir && @is_dir($dir)) {
-                 // Get files for rotation into array:
-                 $files = GeneralUtility::getFilesInDir($dir, 'png,jpg');
-                 // Pick random file:
-                 srand((float)microtime() * 10000000);
-                 $rand = array_rand($files, 1);
-                 $imageData = [
-                     'url' => '/' . htmlspecialchars($settings['folder']) . $files[$rand]
-                 ];
-             }
-         }
-         return $imageData;
+            if ($dir && @is_dir($dir)) {
+                // Get files for rotation into array:
+                $files = GeneralUtility::getFilesInDir($dir, 'png,jpg');
+                // Pick random file:
+                srand((float)microtime() * 10000000);
+                $rand = array_rand($files, 1);
+                $imageData = [
+                    'url' => '/' . htmlspecialchars($settings['folder']) . $files[$rand]
+                ];
+            }
+        }
+        return $imageData;
     }
 }

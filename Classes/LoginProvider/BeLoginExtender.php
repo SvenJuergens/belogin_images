@@ -48,7 +48,7 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
                 .panel-login { border: 0; }
                 .typo3-login { background-image: url("' . $imageData['url'] . '"); }
         ';
-        if(isset($imageData['author']) && !empty($imageData['author'])){
+        if (isset($imageData['author']) && !empty($imageData['author'])) {
             $imageCSS[] = '
             .typo3-login:after{
                     content: " ' . $imageData['author']  . ' ";
@@ -65,12 +65,14 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
         }
 
         $pageRenderer->addCssInlineBlock(
-            'beloginimages', '
+            'beloginimages',
+            '
             @media (min-width: 768px){' .
-                implode('', $imageCSS)
+            implode('', $imageCSS)
             . '
             }
-        ');
+            '
+        );
     }
 
     public function showImages()
@@ -92,7 +94,8 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
         return false;
     }
 
-    public function getImageInfo(){
+    public function getImageInfo()
+    {
         switch ($this->settings['source']) {
             case 'google':
                 $imageData =  ChromeCastService::image($this->settings);
@@ -110,11 +113,11 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
         return $imageData;
     }
 
-    public function getSettings(){
-        if(empty($this->settings)){
+    public function getSettings()
+    {
+        if (empty($this->settings)) {
             $this->settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['belogin_images']);
         }
         return $this->settings;
     }
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 namespace SvenJuergens\BeloginImages\Services;
 
 /**
@@ -16,15 +17,16 @@ namespace SvenJuergens\BeloginImages\Services;
 
 class UnsplashService
 {
-     public static function image($settings){
+    public static function image($settings)
+    {
 
-         if(!isset($settings['unsplashUrl']) ||
+        if (!isset($settings['unsplashUrl']) ||
             empty($settings['unsplashUrl'])
-         ){
-             $url = 'https://source.unsplash.com/category/nature/daily';
-         }else{
-             $url = $settings['unsplashUrl'];
-         }
+        ) {
+            $url = 'https://source.unsplash.com/category/nature/daily';
+        } else {
+            $url = $settings['unsplashUrl'];
+        }
         return [
             'url' => $url
         ];

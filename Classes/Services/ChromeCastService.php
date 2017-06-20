@@ -17,7 +17,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ChromeCastService
 {
-     public static function image($settings){
+    public static function image($settings)
+    {
         $json = json_decode(
             GeneralUtility::getUrl(
                 GeneralUtility::getFileAbsFileName(
