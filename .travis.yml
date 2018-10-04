@@ -27,7 +27,6 @@ before_install:
   - if php -i | grep -q xdebug; then phpenv config-rm xdebug.ini; fi
 
 before_script:
-  - phpenv config-rm xdebug.ini
   - composer require typo3/minimal=$TYPO3_VERSION
   # Restore composer.json
   - git checkout composer.json
