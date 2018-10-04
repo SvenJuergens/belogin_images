@@ -47,7 +47,7 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
                 .typo3-login-carousel-control.right,
                 .typo3-login-carousel-control.left,
                 .panel-login { border: 0; }
-                .typo3-login { background-image: url("' . $imageData['url'] . '"); }
+                .typo3-login { background-image: url("' . $imageData['url'] . '") !important }
         ';
         if (isset($imageData['author']) && !empty($imageData['author'])) {
             $imageCSS[] = '
@@ -69,7 +69,7 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
             'beloginimages',
             '
             @media (min-width: 768px){' .
-            implode('', $imageCSS)
+                implode('', $imageCSS)
             . '
             }
             '
