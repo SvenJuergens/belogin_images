@@ -27,8 +27,8 @@ class ChromeCastService
             ),
             true
         );
-        if (is_array($json)) {
-            $randomNumber = rand(0, count($json));
+        if (\is_array($json)) {
+            $randomNumber = \rand(0, \count($json));
             $imageData = [
                 'url' => $json[$randomNumber]['url'],
                 'author' => $json[$randomNumber]['author']
