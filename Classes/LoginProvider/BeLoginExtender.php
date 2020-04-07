@@ -121,6 +121,7 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
                 // Retrieve whole configuration
                 $this->settings = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('belogin_images');
             } else {
+                // @extensionScannerIgnoreLine
                 $this->settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['belogin_images']);
             }
         }
