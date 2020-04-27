@@ -20,6 +20,8 @@ use SvenJuergens\BeloginImages\Services\FolderService;
 use SvenJuergens\BeloginImages\Services\UnsplashService;
 use TYPO3\CMS\Backend\Controller\LoginController;
 use TYPO3\CMS\Backend\LoginProvider\UsernamePasswordLoginProvider;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -117,12 +119,13 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
     public function getSettings()
     {
         if (empty($this->settings)) {
-            if (class_exists(ExtensionConfiguration::class)) {
-                // Retrieve whole configuration
-                $this->settings = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('belogin_images');
-            } else {
-                // @extensionScannerIgnoreLine
-                $this->settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['belogin_images']);
+            try {
+                $this->settings = GeneralUtility::makeInstance(ExtensionConfiguration::class)
+                    ->get('belogin_images');
+            } catch (ExtensionConfigurationExtensionNotConfiguredException $e) {
+                // do nothing
+            } catch (ExtensionConfigurationPathDoesNotExistException $e) {
+                // do nothing
             }
         }
         return $this->settings;
