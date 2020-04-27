@@ -32,7 +32,7 @@ class FolderService
                 // Get files for rotation into array:
                 $files = GeneralUtility::getFilesInDir($dir, 'png,jpg');
                 // Pick random file:
-                srand((float)microtime() * 10000000);
+                mt_srand((float)microtime() * 10000000);
                 $rand = array_rand($files, 1);
                 $imageData = [
                     'url' => '/' . htmlspecialchars($settings['folder']) . $files[$rand]
