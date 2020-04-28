@@ -3,12 +3,18 @@ language: php
 matrix:
   fast_finish: true
   include:
-    - php: 7.1
-      env: TYPO3_VERSION=^8
-    - php: 7.0
-      env: TYPO3_VERSION=^8
     - php: 7.2
       env: TYPO3_VERSION=^9
+    - php: 7.3
+      env: TYPO3_VERSION=^9
+    - php: 7.2
+      env: TYPO3_VERSION=^10
+    - php: 7.3
+      env: TYPO3_VERSION=^10
+    - php: 7.4
+      env: TYPO3_VERSION=^9
+    - php: 7.4
+      env: TYPO3_VERSION=^10
 
 addons:
   apt:
@@ -27,10 +33,10 @@ before_install:
   - if php -i | grep -q xdebug; then phpenv config-rm xdebug.ini; fi
 
 before_script:
-  - composer require typo3/minimal=$TYPO3_VERSION
+  - composer require "typo3/minimal=${TYPO3_VERSION}"
   # Restore composer.json
   - git checkout composer.json
-  - export TYPO3_PATH_WEB=$PWD/.Build/Web
+  #- export TYPO3_PATH_WEB=$PWD/.Build/Web
 
 script:
   - >
@@ -38,4 +44,4 @@ script:
     echo "Running php lint";
     echo;
     echo;
-    find . -name \*.php ! -path "./.Build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;;
+    find . -name \*.php ! -path "./.Build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
