@@ -28,5 +28,5 @@ On tab "Folder" set a path to a folder with Images, from which a random one is d
 Use `IPmask` in ExtensionManager settings to restrict the output to a specific IP.
 
 ## Example Output
-![example1](https://raw.github.com/SvenJuergens/belogin_images/master/Documentation/example1.png)
-![example2](https://raw.github.com/SvenJuergens/belogin_images/master/Documentation/example2.png)
+![example1](https://raw.github.com/SvenJuergens/belogin_images/master/Documentation/example1.jpg)
+![example2](https://raw.github.com/SvenJuergens/belogin_images/master/Documentation/example2.jpg)
