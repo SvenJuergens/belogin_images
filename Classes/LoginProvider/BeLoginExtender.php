@@ -49,7 +49,23 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
                 .typo3-login-carousel-control.right,
                 .typo3-login-carousel-control.left,
                 .panel-login { border: 0; }
-                .typo3-login { background-image: url("' . $imageData['url'] . '") !important }
+                .typo3-login:before { 
+                    background-image: url("' . $imageData['url'] . '") !important;
+                    content: "";
+                     position: absolute;
+                     top: 0;
+                     right: 0;
+                     bottom: 0;
+                     left: 0;
+                     z-index: 1;
+                     animation: 2s ease 0s normal forwards 1 fadein;
+                     animation-iteration-count: 1;
+                }
+                @keyframes fadein{
+                    0% { opacity:0; }
+                    80% { opacity:0; }
+                    100% { opacity:1; }
+                }
         ';
         if (isset($imageData['author']) && !empty($imageData['author'])) {
             $imageCSS[] = '
@@ -63,6 +79,7 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
                     background-color:rgba(255,255,255,0.4);
                     padding:2px 0 2px 30px;
                     width:100%;
+                    z-index: 2;
                 }
             ';
         }
