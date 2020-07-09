@@ -60,6 +60,7 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
                      z-index: 1;
                      animation: 2s ease 0s normal forwards 1 fadein;
                      animation-iteration-count: 1;
+                     background-size: cover;
                 }
                 @keyframes fadein{
                     0% { opacity:0; }
