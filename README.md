@@ -14,7 +14,7 @@ then take a Image Provider.
 
 You can choose between Images from [Google ChromeCast](https://github.com/dconnolly/chromecast-backgrounds/), images from [Unsplash](https://source.unsplash.com/) or you set a folder on your Server with images.
 
-![configuration1](/Documentation/configuration1.png)
+![configuration1](./Documentation/configuration1.png)
 
 If you want to use Unsplash you can build an URL on [https://source.unsplash.com/)](https://source.unsplash.com/)
 
