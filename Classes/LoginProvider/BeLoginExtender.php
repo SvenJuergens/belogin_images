@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SvenJuergens\BeloginImages\LoginProvider;
 
 /**
@@ -29,7 +31,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class BeLoginExtender extends UsernamePasswordLoginProvider
 {
-    public $settings = [];
+    public array $settings = [];
 
     /**
      * @param StandaloneView $view
@@ -64,14 +66,13 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
                 }
                 @keyframes fadein{
                     0% { opacity:0; }
-                    80% { opacity:0; }
                     100% { opacity:1; }
                 }
         ';
         if (isset($imageData['author']) && !empty($imageData['author'])) {
             $imageCSS[] = '
             .typo3-login:after{
-                    content: " ' . $imageData['author']  . ' ";
+                    content: " ' . $imageData['author'] . ' ";
                     position: absolute;
                     left:0;
                     bottom:20px;
@@ -96,7 +97,7 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
         );
     }
 
-    public function showImages()
+    public function showImages(): bool
     {
         $settings = $this->getSettings();
         if (empty($settings)) {
@@ -106,16 +107,17 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
             return true;
         }
 
-        if (isset($settings['IPmask']) && !empty($settings['IPmask'])) {
-            //check current IP
-            if (GeneralUtility::cmpIP(GeneralUtility::getIndpEnv('REMOTE_ADDR'), $settings['IPmask'])) {
-                return true;
-            }
+        //check current IP
+        if (isset($settings['IPmask'])
+            && !empty($settings['IPmask'])
+            && GeneralUtility::cmpIP(GeneralUtility::getIndpEnv('REMOTE_ADDR'), $settings['IPmask'])
+        ) {
+            return true;
         }
         return false;
     }
 
-    public function getImageInfo()
+    public function getImageInfo(): array
     {
         switch ($this->settings['source']) {
             case 'google':
@@ -134,6 +136,9 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
         return $imageData;
     }
 
+    /**
+     * @return mixed
+     */
     public function getSettings()
     {
         if (empty($this->settings)) {

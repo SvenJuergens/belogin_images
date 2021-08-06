@@ -14,12 +14,10 @@ namespace SvenJuergens\BeloginImages\Services;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 class UnsplashService
 {
-    public static function image($settings)
+    public static function image($settings): array
     {
-
         if (!isset($settings['unsplashUrl']) ||
             empty($settings['unsplashUrl'])
         ) {

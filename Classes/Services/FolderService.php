@@ -18,7 +18,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class FolderService
 {
-    public static function image($settings)
+    public static function image($settings): array
     {
         $imageData = [];
         if ($settings['folder']) {
