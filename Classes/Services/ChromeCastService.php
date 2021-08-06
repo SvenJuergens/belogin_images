@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace SvenJuergens\BeloginImages\Services;
 
 /**
@@ -20,18 +23,27 @@ class ChromeCastService
     public static function image($settings)
     {
         $json = json_decode(
-            GeneralUtility::getUrl(
+            file_get_contents(
                 GeneralUtility::getFileAbsFileName(
-                    'EXT:belogin_images/Resources/Private/Libraries/chromecast-backgrounds/backgrounds.json'
+                    'EXT:belogin_images/Resources/Private/chromecast-json/backgrounds.json'
                 )
             ),
             true
         );
-        if (\is_array($json)) {
-            $randomNumber = \rand(0, \count($json));
+        $json2 = json_decode(
+            file_get_contents(
+                GeneralUtility::getFileAbsFileName(
+                    'EXT:belogin_images/Resources/Private/chromecast-json/images.json'
+                )
+            ),
+            true
+        );
+        $json = array_merge($json, $json2);
+        if (is_array($json)) {
+            $randomNumber = rand(0, count($json));
             $imageData = [
                 'url' => $json[$randomNumber]['url'],
-                'author' => $json[$randomNumber]['author']
+                'author' => $json[$randomNumber]['author'] ?? $json[$randomNumber]['photographer']
             ];
         } else {
             $imageData = [
