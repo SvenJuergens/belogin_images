@@ -64,6 +64,11 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
                      animation-iteration-count: 1;
                      background-size: cover;
                 }
+                .card, .panel {
+                    background-color: #ffffffb8;
+                    transition: background-color 300ms linear;
+                }
+                .card:hover, .panel:hover {background-color: #fff}
                 @keyframes fadein{
                     0% { opacity:0; }
                     100% { opacity:1; }
