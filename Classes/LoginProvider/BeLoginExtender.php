@@ -31,7 +31,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class BeLoginExtender extends UsernamePasswordLoginProvider
 {
-    public array $settings = [];
+    public $settings = [];
 
     /**
      * @param StandaloneView $view

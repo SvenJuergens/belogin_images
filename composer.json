@@ -35,7 +35,7 @@
     "vendor_dir": ".Build/vendor",
     "sort-packages": true,
     "platform": {
-      "php": "7.4"
+      "php": "=>7.2"
     }
   },
   "scripts": {
