@@ -1,6 +1,6 @@
 # TYPO3 Extension BeLogin Images
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/svenjuergens/belogin_images.svg)](https://packagist.org/packages/svenjuergens/belogin_images)
+[![Latest Stable Version](https://img.shields.io/packagist/v/svenjuergens/belogin_images.svg)](https://packagist.org/packages/svenjuergens/belogin_images) [![Packagist](https://img.shields.io/packagist/dt/svenjuergens/belogin_images.svg)](https://packagist.org/packages/svenjuergens/belogin_images)
 
 Display random Background Images from different sources at your TYPO3 BackendLogin Page.
 
