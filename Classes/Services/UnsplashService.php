@@ -18,8 +18,7 @@ class UnsplashService
 {
     public static function image($settings): array
     {
-        if (!isset($settings['unsplashUrl']) ||
-            empty($settings['unsplashUrl'])
+        if (empty($settings['unsplashUrl'])
         ) {
             $url = 'https://source.unsplash.com/category/nature/daily';
         } else {

@@ -21,7 +21,7 @@ class FolderService
     public static function image($settings): array
     {
         $imageData = [];
-        if ($settings['folder']) {
+        if ($settings['folder'] ?? false) {
             $absPath = GeneralUtility::resolveBackPath(
                 $settings['folder']
             );
