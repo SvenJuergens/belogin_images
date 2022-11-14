@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ChromeCastService
 {
-    public static function image($settings)
+    public static function image($settings): array
     {
         $json = json_decode(
             file_get_contents(
@@ -43,7 +43,7 @@ class ChromeCastService
             $randomNumber = rand(0, count($json));
             $imageData = [
                 'url' => $json[$randomNumber]['url'],
-                'author' => $json[$randomNumber]['author'] ?? $json[$randomNumber]['photographer']
+                'author' => $json[$randomNumber]['author'] ?? ($json[$randomNumber]['photographer'] ?? '')
             ];
         } else {
             $imageData = [
