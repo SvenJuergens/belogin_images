@@ -1,4 +1,4 @@
-# cat=basic; type=options[Google ChromeCast=google,Unsplash=unsplash, Folder=folder]; label=Choose a Image Provider
+# cat=basic; type=options[Google ChromeCast=google,Unsplash=unsplash, Folder=folder, Bing=bing]; label=Choose a Image Provider
 source = google
 
 # cat=basic; type=string; label=Show Login Backend Images only for this IP:

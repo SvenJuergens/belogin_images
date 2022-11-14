@@ -17,6 +17,7 @@ namespace SvenJuergens\BeloginImages\LoginProvider;
  * The TYPO3 project - inspiring people to share!
  */
 
+use SvenJuergens\BeloginImages\Services\BingService;
 use SvenJuergens\BeloginImages\Services\ChromeCastService;
 use SvenJuergens\BeloginImages\Services\FolderService;
 use SvenJuergens\BeloginImages\Services\UnsplashService;
@@ -133,6 +134,9 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
                 break;
             case 'folder':
                 $imageData = FolderService::image($this->settings);
+                break;
+            case 'bing':
+                $imageData = BingService::image($this->settings);
                 break;
             default:
                 $imageData = [];
