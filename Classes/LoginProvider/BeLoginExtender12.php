@@ -24,7 +24,7 @@ use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
-class BeLoginExtender extends UsernamePasswordLoginProvider
+class BeLoginExtender12 extends UsernamePasswordLoginProvider
 {
 
     /**
@@ -32,7 +32,7 @@ class BeLoginExtender extends UsernamePasswordLoginProvider
      * @param PageRenderer $pageRenderer
      * @param LoginController $loginController
      */
-    public function render(StandaloneView $view, PageRenderer $pageRenderer, LoginController $loginController)
+    public function render(StandaloneView $view, PageRenderer $pageRenderer, LoginController $loginController): void
     {
         parent::render($view, $pageRenderer, $loginController);
 

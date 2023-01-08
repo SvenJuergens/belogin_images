@@ -1,0 +1,41 @@
+:root{
+    --beloginImagesBackgroundImage: '';
+    --beloginImagesBackgroundImageCreator: '';
+}
+.typo3-login-carousel-control.right,
+.typo3-login-carousel-control.left,
+.panel-login { border: 0; }
+.typo3-login:before {
+    background-image: var( --beloginImagesBackgroundImage );
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    animation: 2s ease 0s normal forwards 1 fadein;
+    animation-iteration-count: 1;
+    background-size: cover;
+}
+.card, .panel {
+    background-color: #ffffffb8;
+    transition: background-color 300ms linear;
+}
+.card:hover, .panel:hover {background-color: #fff}
+@keyframes fadein{
+    0% { opacity:0; }
+    100% { opacity:1; }
+}
+.typo3-login:after{
+    content: var( --beloginImagesBackgroundImageCreator );
+    position: absolute;
+    left:0;
+    bottom:20px;
+    color: #000;
+    font-size:18px;
+    background-color:rgba(255,255,255,0.4);
+    padding:2px 0 2px 30px;
+    width:100%;
+    z-index: 2;
+}
