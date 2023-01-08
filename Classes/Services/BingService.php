@@ -16,7 +16,6 @@ namespace SvenJuergens\BeloginImages\Services;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 class BingService
 {
     /**
