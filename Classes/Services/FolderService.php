@@ -31,6 +31,9 @@ class FolderService
             if ($dir && @is_dir($dir)) {
                 // Get files for rotation into array:
                 $files = GeneralUtility::getFilesInDir($dir, 'png,jpg');
+                if(empty($files)){
+                    return $imageData;
+                }
                 // Pick random file:
                 mt_srand((float)microtime() * 10000000);
                 $rand = array_rand($files, 1);
