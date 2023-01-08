@@ -105,7 +105,7 @@ class ServiceWrapper
     /**
      * @return mixed
      */
-    public function getSettings(): mixed
+    public function getSettings()
     {
         if (empty($this->settings)) {
             try {
