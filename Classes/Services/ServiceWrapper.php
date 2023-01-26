@@ -35,8 +35,8 @@ class ServiceWrapper
 
         $imageCSS[] = '
                 :root {
-                  --beloginImagesBackgroundImage: url( ' . $imageData['url'] . ' ) !important;
-                  --beloginImagesBackgroundImageCreator: "' . $imageData['author'] . '";
+                  --beloginImagesBackgroundImage: url( ' . ($imageData['url'] ?? '') . ' ) !important;
+                  --beloginImagesBackgroundImageCreator: "' . ($imageData['author'] ?? '') . '";
                 }
         ';
         if (empty($imageData['author'])) {
