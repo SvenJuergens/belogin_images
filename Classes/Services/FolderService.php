@@ -35,7 +35,7 @@ class FolderService
                     return $imageData;
                 }
                 // Pick random file:
-                mt_srand((float)microtime() * 10000000);
+                mt_srand((int)((float)microtime() * 10000000));
                 $rand = array_rand($files, 1);
                 $imageData = [
                     'url' => '/' . htmlspecialchars($settings['folder']) . $files[$rand]
