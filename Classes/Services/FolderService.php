@@ -14,6 +14,7 @@ namespace SvenJuergens\BeloginImages\Services;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class FolderService
@@ -37,8 +38,10 @@ class FolderService
                 // Pick random file:
                 mt_srand((int)((float)microtime() * 10000000));
                 $rand = array_rand($files, 1);
+
+                $resourceFactory = GeneralUtility::makeInstance(ResourceFactory::class);
                 $imageData = [
-                    'url' => '/' . htmlspecialchars($settings['folder']) . $files[$rand]
+                    'url' => $resourceFactory->getFileObjectFromCombinedIdentifier($settings['folder'] . '/' . $files[$rand])->getPublicUrl()
                 ];
             }
         }
