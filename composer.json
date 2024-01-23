@@ -6,13 +6,13 @@
   "authors": [
     {
       "name": "Sven Jürgens",
-      "email": "typo3@blue-side.de"
+      "email": "t3YYYY@blue-side.de"
     }
   ],
   "license": "GPL-2.0-or-later",
   "type": "typo3-cms-extension",
   "require": {
-    "typo3/cms-core": "^9.5.39 || ^10.4.34 || ^11.5.21 || ^12.1.0",
+    "typo3/cms-core": "^9.5.39 || ^10.4.34 || ^11.5.21 || ^12.4",
     "ext-json": "*"
   },
   "replace": {

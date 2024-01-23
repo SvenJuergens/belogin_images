@@ -17,10 +17,10 @@ $EM_CONF[$_EXTKEY] = [
     'author' => 'Sven Jürgens',
     'author_email' => 't3YYYY@blue-side.de',
     'state' => 'stable',
-    'version' => '4.0.3',
+    'version' => '4.0.4',
     'constraints' => [
         'depends' => [
-            'typo3' => '9.5.39-12.2.99',
+            'typo3' => '9.5.39-12.9.99',
         ],
         'conflicts' => [],
         'suggests' => [],
