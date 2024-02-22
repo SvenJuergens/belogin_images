@@ -41,7 +41,7 @@ class FolderService
 
                 $resourceFactory = GeneralUtility::makeInstance(ResourceFactory::class);
                 $imageData = [
-                    'url' => $resourceFactory->getFileObjectFromCombinedIdentifier($settings['folder'] . '/' . $files[$rand])->getPublicUrl()
+                    'url' => $resourceFactory->getFileObjectFromCombinedIdentifier($settings['folder'] . '/' . $files[$rand])->getPublicUrl(),
                 ];
             }
         }
