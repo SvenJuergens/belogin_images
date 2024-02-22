@@ -14,17 +14,21 @@ declare(strict_types=1);
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 namespace SvenJuergens\BeloginImages\Services;
 
-use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
-use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use SvenJuergens\BeloginImages\Utility\ExtensionConfigUtility;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ServiceWrapper
 {
-    public $settings = [];
+    protected mixed $settings;
+
+    public function __construct()
+    {
+        $this->settings = ExtensionConfigUtility::getSettings();
+    }
 
     public function main(PageRenderer $pageRenderer): void
     {
@@ -60,63 +64,36 @@ class ServiceWrapper
         );
     }
 
-    public function showImages(): bool
+    protected function showImages(): bool
     {
-        $settings = $this->getSettings();
-        if (empty($settings)) {
+        if (empty($this->settings)) {
             return true;
         }
-        if (isset($settings['IPmask']) && empty($settings['IPmask'])) {
+        if (isset($this->settings['IPmask']) && empty($this->settings['IPmask'])) {
             return true;
         }
 
         //check current IP
-        if (isset($settings['IPmask'])
-            && !empty($settings['IPmask'])
-            && GeneralUtility::cmpIP(GeneralUtility::getIndpEnv('REMOTE_ADDR'), $settings['IPmask'])
+        if (isset($this->settings['IPmask'])
+            && !empty($this->settings['IPmask'])
+            && GeneralUtility::cmpIP(GeneralUtility::getIndpEnv('REMOTE_ADDR'), $this->settings['IPmask'])
         ) {
             return true;
         }
         return false;
     }
 
-    public function getImageInfo(): array
-    {
-        switch ($this->settings['source']) {
-            case 'google':
-                $imageData =  ChromeCastService::image($this->settings);
-                break;
-            case 'unsplash':
-                $imageData =  UnsplashService::image($this->settings);
-                break;
-            case 'folder':
-                $imageData = FolderService::image($this->settings);
-                break;
-            case 'bing':
-                $imageData = BingService::image($this->settings);
-                break;
-            default:
-                $imageData = [];
-                break;
-        }
-        return $imageData;
-    }
-
     /**
-     * @return mixed
+     * @throws \Exception
      */
-    public function getSettings()
+    protected function getImageInfo(): array
     {
-        if (empty($this->settings)) {
-            try {
-                $this->settings = GeneralUtility::makeInstance(ExtensionConfiguration::class)
-                    ->get('belogin_images');
-            } catch (ExtensionConfigurationExtensionNotConfiguredException $e) {
-                // do nothing
-            } catch (ExtensionConfigurationPathDoesNotExistException $e) {
-                // do nothing
-            }
-        }
-        return $this->settings;
+        return match ($this->settings['source']) {
+            'google' => ChromeCastService::image($this->settings),
+            'unsplash' => UnsplashService::image($this->settings),
+            'folder' => FolderService::image($this->settings),
+            'bing' => BingService::image($this->settings),
+            default => [],
+        };
     }
 }
