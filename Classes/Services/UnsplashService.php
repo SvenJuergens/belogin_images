@@ -25,7 +25,7 @@ class UnsplashService
             $url = $settings['unsplashUrl'];
         }
         return [
-            'url' => $url
+            'url' => $url,
         ];
     }
 }
