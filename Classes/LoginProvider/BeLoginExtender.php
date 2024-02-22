@@ -26,13 +26,12 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class BeLoginExtender extends UsernamePasswordLoginProvider
 {
-
     /**
      * @param StandaloneView $view
      * @param PageRenderer $pageRenderer
      * @param LoginController $loginController
      */
-    public function render(StandaloneView $view, PageRenderer $pageRenderer, LoginController $loginController)
+    public function render(StandaloneView $view, PageRenderer $pageRenderer, LoginController $loginController): void
     {
         parent::render($view, $pageRenderer, $loginController);
 
