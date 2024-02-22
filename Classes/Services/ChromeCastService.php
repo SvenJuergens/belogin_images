@@ -16,6 +16,7 @@ namespace SvenJuergens\BeloginImages\Services;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ChromeCastService
@@ -39,16 +40,16 @@ class ChromeCastService
             true
         );
         $json = array_merge($json, $json2);
-        if (is_array($json)) {
+        if (count($json) > 0) {
             $randomNumber = rand(0, count($json));
             $imageData = [
                 'url' => $json[$randomNumber]['url'],
-                'author' => $json[$randomNumber]['author'] ?? ($json[$randomNumber]['photographer'] ?? '')
+                'author' => $json[$randomNumber]['author'] ?? ($json[$randomNumber]['photographer'] ?? ''),
             ];
         } else {
             $imageData = [
-                'url' => 'https://lh4.googleusercontent.com/-7EJI2_bMWrg/U0_6WXfnu0I/AAAAAAAA2IA/qnv2qDY374E/s1920-w1920-h1080-c/388A4957.jpg',
-                'author' => 'Leo Deegan'
+                'url' => 'https://lh5.googleusercontent.com/-Hn2QgYPEDxo/Tg1bUgAlTfI/AAAAAAAAAI0/R33ZpN3IaJ8/s2560/061012-1078-PelicanCove.jpg',
+                'author' => 'Patrick Smith',
             ];
         }
         return $imageData;
