@@ -16,6 +16,7 @@ namespace SvenJuergens\BeloginImages\Services;
  */
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\PathUtility;
 
 class FolderService
 {
@@ -28,7 +29,6 @@ class FolderService
             );
             // Get rotation folder:
             $dir = GeneralUtility::getFileAbsFileName($absPath);
-
             if ($dir && @is_dir($dir)) {
                 // Get files for rotation into array:
                 $files = GeneralUtility::getFilesInDir($dir, 'png,jpg');
@@ -38,10 +38,15 @@ class FolderService
                 // Pick random file:
                 mt_srand((int)((float)microtime() * 10000000));
                 $rand = array_rand($files, 1);
-
                 $resourceFactory = GeneralUtility::makeInstance(ResourceFactory::class);
+                $absPath = rtrim($absPath, '/') . '/';
+                if(str_starts_with($absPath, 'EXT:')) {
+                    $url = PathUtility::getAbsoluteWebPath( GeneralUtility::getFileAbsFileName( $absPath .  $files[$rand] ));
+                } else {
+                    $url = $resourceFactory->getFileObjectFromCombinedIdentifier( $absPath . $files[$rand])?->getPublicUrl();
+                }
                 $imageData = [
-                    'url' => $resourceFactory->getFileObjectFromCombinedIdentifier($settings['folder'] . '/' . $files[$rand])->getPublicUrl(),
+                    'url' =>  $url
                 ];
             }
         }
