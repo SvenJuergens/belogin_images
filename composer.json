@@ -12,7 +12,7 @@
   "license": "GPL-2.0-or-later",
   "type": "typo3-cms-extension",
   "require": {
-    "typo3/cms-core": "^11.5.36 || ^12.4 || ^13.0",
+    "typo3/cms-core": "^11.5.36 || ^12.4",
     "ext-json": "*",
 	  "php": ">=8.0.0"
   },
@@ -31,7 +31,7 @@
     "vendor_dir": ".Build/vendor",
     "sort-packages": true,
     "platform": {
-      "php": "7.2"
+      "php": ">=8.0.0"
     },
     "allow-plugins": {
       "typo3/cms-composer-installers": true,
