@@ -1,60 +1,64 @@
 {
-  "name": "svenjuergens/belogin_images",
-  "description": "Display random Background Images from different sources at your TYPO3 BackendLogin Page.",
-  "keywords": ["typo3", "extension", "Backend"],
-  "homepage": "https://github.com/SvenJuergens/belogin_images",
-  "authors": [
-    {
-      "name": "Sven Jürgens",
-      "email": "t3YYYY@blue-side.de"
-    }
-  ],
-  "license": "GPL-2.0-or-later",
-  "type": "typo3-cms-extension",
-  "require": {
-    "typo3/cms-core": "^11.5.36 || ^12.4",
-    "ext-json": "*",
-	  "php": ">=8.0.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "SvenJuergens\\BeloginImages\\": "Classes/"
-    }
-  },
-  "extra": {
-    "typo3/cms": {
-      "extension-key": "belogin_images"
-    }
-  },
-  "config": {
-    "vendor-dir": ".Build/vendor",
-    "vendor_dir": ".Build/vendor",
-    "sort-packages": true,
-    "platform": {
-      "php": "8.0.0"
-    },
-    "allow-plugins": {
-      "typo3/cms-composer-installers": true,
-      "typo3/class-alias-loader": true
-    }
-  },
-  "scripts": {
-    "test:php:lint": [
-      "parallel-lint --exclude .Build ."
-    ],
-    "test": [
-      "@test:php:lint"
-    ],
-    "cgl": [
-      "php-cs-fixer fix --config=.php-cs-fixer.php --diff --dry-run --verbose"
-    ],
-    "cglFix": [
-      "php-cs-fixer fix --config=.php-cs-fixer.php"
-    ]
-  },
-  "require-dev": {
-    "friendsofphp/php-cs-fixer": "^3",
-    "php-parallel-lint/php-console-highlighter": "^0.5.0",
-    "php-parallel-lint/php-parallel-lint": "^1.2"
-  }
+	"name": "svenjuergens/belogin_images",
+	"description": "Display random Background Images from different sources at your TYPO3 BackendLogin Page.",
+	"keywords": [
+		"typo3",
+		"extension",
+		"Backend"
+	],
+	"homepage": "https://github.com/SvenJuergens/belogin_images",
+	"authors": [
+		{
+			"name": "Sven Jürgens",
+			"email": "t3YYYY@blue-side.de"
+		}
+	],
+	"license": "GPL-2.0-or-later",
+	"type": "typo3-cms-extension",
+	"require": {
+		"typo3/cms-core": "^13.4",
+		"ext-json": "*",
+		"php": ">=8.2.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"SvenJuergens\\BeloginImages\\": "Classes/"
+		}
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "belogin_images"
+		}
+	},
+	"config": {
+		"vendor-dir": ".Build/vendor",
+		"vendor_dir": ".Build/vendor",
+		"sort-packages": true,
+		"platform": {
+			"php": "8.2.0"
+		},
+		"allow-plugins": {
+			"typo3/cms-composer-installers": true,
+			"typo3/class-alias-loader": true
+		}
+	},
+	"scripts": {
+		"test:php:lint": [
+			"parallel-lint --exclude .Build ."
+		],
+		"test": [
+			"@test:php:lint"
+		],
+		"cgl": [
+			"php-cs-fixer fix --config=.php-cs-fixer.php --diff --dry-run --verbose"
+		],
+		"cglFix": [
+			"php-cs-fixer fix --config=.php-cs-fixer.php"
+		]
+	},
+	"require-dev": {
+		"friendsofphp/php-cs-fixer": "^3",
+		"php-parallel-lint/php-console-highlighter": "^0.5.0",
+		"php-parallel-lint/php-parallel-lint": "^1.2"
+	}
 }

@@ -20,7 +20,8 @@ namespace SvenJuergens\BeloginImages\Services;
 use SvenJuergens\BeloginImages\Utility\ExtensionConfigUtility;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
+#[Autoconfigure(public: true)]
 class ServiceWrapper
 {
     protected mixed $settings;
@@ -30,6 +31,9 @@ class ServiceWrapper
         $this->settings = ExtensionConfigUtility::getSettings();
     }
 
+    /**
+     * @throws \Exception
+     */
     public function main(PageRenderer $pageRenderer): void
     {
         if ($this->showImages() === false) {
