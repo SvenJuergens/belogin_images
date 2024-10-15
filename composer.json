@@ -31,7 +31,7 @@
     "vendor_dir": ".Build/vendor",
     "sort-packages": true,
     "platform": {
-      "php": ">=8.0.0"
+      "php": "8.0.0"
     },
     "allow-plugins": {
       "typo3/cms-composer-installers": true,
