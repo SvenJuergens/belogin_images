@@ -1,11 +1,8 @@
-# cat=basic; type=options[Google ChromeCast=google,Unsplash=unsplash, Folder=folder, Bing=bing]; label=Choose a Image Provider
+# cat=basic; type=options[Google ChromeCast=google,Folder=folder, Bing=bing]; label=Choose a Image Provider
 source = google
 
 # cat=basic; type=string; label=Show Login Backend Images only for this IP:
 IPmask =
-
-# cat=unsplash; type=string; label=Show Options for Unsplash: (more on https://source.unsplash.com/):
-unsplashUrl = https://source.unsplash.com/1600x900/?nature
 
 # cat=folder; type=string; label=Show images from a specific folder:
 folder = fileadmin/images/

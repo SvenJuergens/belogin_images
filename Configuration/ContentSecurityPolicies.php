@@ -13,12 +13,7 @@ use TYPO3\CMS\Core\Type\Map;
 $source = ExtensionConfigUtility::getSettings('source');
 
 $collection = [];
-if ($source === 'unsplash') {
-    $collection = [
-        new Mutation(MutationMode::Extend, Directive::ImgSrc, SourceScheme::data, new UriValue('https://images.unsplash.com')),
-        new Mutation(MutationMode::Extend, Directive::ImgSrc, SourceScheme::data, new UriValue('https://source.unsplash.com')),
-    ];
-}
+
 if ($source === 'google') {
     $collection = [
         new Mutation(MutationMode::Extend, Directive::ImgSrc, SourceScheme::data, new UriValue('https://*.googleusercontent.com')),

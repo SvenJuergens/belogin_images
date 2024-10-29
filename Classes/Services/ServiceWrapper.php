@@ -90,7 +90,6 @@ class ServiceWrapper
     {
         return match ($this->settings['source']) {
             'google' => ChromeCastService::image($this->settings),
-            'unsplash' => UnsplashService::image($this->settings),
             'folder' => FolderService::image($this->settings),
             'bing' => BingService::image($this->settings),
             default => [],
