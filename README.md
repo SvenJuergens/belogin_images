@@ -12,13 +12,10 @@ then take a Image Provider.
 
 ## Configuration
 
-You can choose between Images from [Google ChromeCast](https://github.com/dconnolly/chromecast-backgrounds/), images from [Unsplash](https://source.unsplash.com/) or you set a folder on your Server with images.
+You can choose between Images from [Google ChromeCast](https://github.com/dconnolly/chromecast-backgrounds/), images from [Bing's photo of the day](https://www.bing.com/) or you can set a folder on your Server with images.
 
 ![configuration1](https://raw.githubusercontent.com/SvenJuergens/belogin_images/main/Documentation/configuration1.png)
 
-If you want to use Unsplash you can build an URL on [https://source.unsplash.com/)](https://source.unsplash.com/)
-
-![configuration2](https://raw.githubusercontent.com/SvenJuergens/belogin_images/main/Documentation/configuration2.png)
 
 On tab "Folder" set a path to a folder with Images, from which a random one is displayed.
 
@@ -30,3 +27,4 @@ Use `IPmask` in ExtensionManager settings to restrict the output to a specific I
 ## Example Output
 ![example1](https://raw.githubusercontent.com/SvenJuergens/belogin_images/main/Documentation/example1.jpg)
 ![example2](https://raw.githubusercontent.com/SvenJuergens/belogin_images/main/Documentation/example2.jpg)
+![example3](https://raw.githubusercontent.com/SvenJuergens/belogin_images/main/Documentation/example3.jpg)
