@@ -14,17 +14,17 @@ then take a Image Provider.
 
 You can choose between Images from [Google ChromeCast](https://github.com/dconnolly/chromecast-backgrounds/), images from [Bing's photo of the day](https://www.bing.com/) or you can set a folder on your Server with images.
 
-![configuration1](https://raw.githubusercontent.com/SvenJuergens/belogin_images/main/Documentation/configuration1.png)
+![configuration1](https://raw.githubusercontent.com/SvenJuergens/belogin_images/refs/heads/main/Documentation/configuration1.png)
 
 
 On tab "Folder" set a path to a folder with Images, from which a random one is displayed.
 
-![configuration3](https://raw.githubusercontent.com/SvenJuergens/belogin_images/main/Documentation/configuration3.png)
+![configuration3](https://raw.githubusercontent.com/SvenJuergens/belogin_images/refs/heads/main/Documentation/configuration3.png)
 
 ## Optional
 Use `IPmask` in ExtensionManager settings to restrict the output to a specific IP.
 
 ## Example Output
-![example1](https://raw.githubusercontent.com/SvenJuergens/belogin_images/main/Documentation/example1.jpg)
-![example2](https://raw.githubusercontent.com/SvenJuergens/belogin_images/main/Documentation/example2.jpg)
+![example1](https://raw.githubusercontent.com/SvenJuergens/belogin_images/refs/heads/main/Documentation/example1.jpg)
+![example2](https://raw.githubusercontent.com/SvenJuergens/belogin_images/refs/heads/main/Documentation/example2.jpg)
 ![example3](https://raw.githubusercontent.com/SvenJuergens/belogin_images/main/Documentation/example3.jpg)
