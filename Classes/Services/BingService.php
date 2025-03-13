@@ -24,9 +24,13 @@ class BingService
     public static function image($settings): array
     {
         $imageData = [];
-        $json = json_decode(file_get_contents(
-            'https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8&pid=hp'
-        ), true, 512, JSON_THROW_ON_ERROR);
+        try {
+            $json = json_decode(file_get_contents(
+                'https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8&pid=hp'
+            ), true, 512, JSON_THROW_ON_ERROR);
+        }catch (\Exception $e) {
+          return [];
+        }
 
         if (is_array($json)) {
             $randomNumber = random_int(0, 8);

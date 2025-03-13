@@ -21,24 +21,27 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ChromeCastService
 {
+    /**
+     * @throws \JsonException
+     */
     public static function image($settings): array
     {
-        $json = json_decode(
-            file_get_contents(
+        try {
+            $json = json_decode(file_get_contents(
                 GeneralUtility::getFileAbsFileName(
                     'EXT:belogin_images/Resources/Private/chromecast-json/backgrounds.json'
                 )
-            ),
-            true
-        );
-        $json2 = json_decode(
-            file_get_contents(
+            ), true, 512, JSON_THROW_ON_ERROR);
+            $json2 = json_decode(file_get_contents(
                 GeneralUtility::getFileAbsFileName(
                     'EXT:belogin_images/Resources/Private/chromecast-json/images.json'
                 )
-            ),
-            true
-        );
+            ), true, 512, JSON_THROW_ON_ERROR);
+        } catch (\Exception $e) {
+            return [];
+        }
+
+
         $json = array_merge($json, $json2);
         if (count($json) > 0) {
             $randomNumber = rand(0, count($json));

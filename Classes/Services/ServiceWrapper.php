@@ -41,6 +41,10 @@ class ServiceWrapper
         }
         $imageData = $this->getImageInfo();
 
+        if(count($imageData) === 0) {
+            return;
+        }
+
         $imageCSS[] = '
                 :root {
                   --beloginImagesBackgroundImage: url( ' . ($imageData['url'] ?? '') . ' ) !important;
