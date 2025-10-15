@@ -32,12 +32,15 @@ class BingService
           return [];
         }
 
-        if (is_array($json)) {
-            $randomNumber = random_int(0, 8);
-            $imageData = [
-                'url' => 'https://www.bing.com/' . ltrim((string)$json['images'][$randomNumber]['url'], '/'),
-                'author' => $json['images'][$randomNumber]['copyrightonly'],
-            ];
+        if (is_array($json) && isset($json['images']) && is_array($json['images'])) {
+            $imageCount = count($json['images']);
+            if ($imageCount > 0) {
+                $randomNumber = random_int(0, $imageCount - 1);
+                $imageData = [
+                    'url' => 'https://www.bing.com/' . ltrim((string)$json['images'][$randomNumber]['url'], '/'),
+                    'author' => $json['images'][$randomNumber]['copyrightonly'] ?? '',
+                ];
+            }
         }
         return $imageData;
     }
