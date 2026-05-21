@@ -67,7 +67,7 @@ class ServiceWrapper
             '
         );
         $pageRenderer->addCssFile(
-            GeneralUtility::getFileAbsFileName('EXT:belogin_images/Resources/Public/Css/belogin_images.css'),
+            'EXT:belogin_images/Resources/Public/Css/belogin_images.css',
             'stylesheet'
         );
     }
