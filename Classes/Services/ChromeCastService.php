@@ -44,7 +44,7 @@ class ChromeCastService
 
         $json = array_merge($json, $json2);
         if (count($json) > 0) {
-            $randomNumber = rand(0, count($json));
+            $randomNumber = random_int(0, count($json) - 1);
             $imageData = [
                 'url' => $json[$randomNumber]['url'],
                 'author' => $json[$randomNumber]['author'] ?? ($json[$randomNumber]['photographer'] ?? ''),
