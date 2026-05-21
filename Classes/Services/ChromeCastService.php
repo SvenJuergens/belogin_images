@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SvenJuergens\BeloginImages\Services;
-
-/**
+/*
  * This file is part of the TYPO3 CMS project.
  *
  * It is free software; you can redistribute it and/or modify it under
@@ -16,6 +14,8 @@ namespace SvenJuergens\BeloginImages\Services;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+namespace SvenJuergens\BeloginImages\Services;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -37,7 +37,7 @@ class ChromeCastService
                     'EXT:belogin_images/Resources/Private/chromecast-json/images.json'
                 )
             ), true, 512, JSON_THROW_ON_ERROR);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return [];
         }
 

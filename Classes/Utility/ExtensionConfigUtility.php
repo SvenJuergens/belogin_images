@@ -18,7 +18,7 @@ class ExtensionConfigUtility
         try {
             return GeneralUtility::makeInstance(ExtensionConfiguration::class)
                 ->get('belogin_images', $settingsKey);
-        } catch (ExtensionConfigurationExtensionNotConfiguredException|ExtensionConfigurationPathDoesNotExistException $e) {
+        } catch (ExtensionConfigurationExtensionNotConfiguredException|ExtensionConfigurationPathDoesNotExistException) {
             return null;
         }
     }
